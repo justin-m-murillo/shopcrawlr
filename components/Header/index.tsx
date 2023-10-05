@@ -1,5 +1,4 @@
 'use client'
-import styles from './styles';
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'
@@ -10,6 +9,7 @@ import SearchButton from '../SearchButton';
 import SearchSelector from '../subcomponents/SearchSelector';
 import Selector from '../subcomponents/Selector';
 import { getMaxPriceFilter, getMinPriceFilter, getPagesFilter, getSortFilter } from '@/utils/getSearchFilters';
+import styles from './styles';
 
 const PAGES_OPTIONS = getPagesFilter();
 const SORT_OPTIONS = getSortFilter();

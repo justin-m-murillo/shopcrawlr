@@ -5,8 +5,7 @@ export type SearchParams = {
   maxPrice?: string;
 };
 
-export type PageResult = {
-  content: Content;
+type APIResult = {
   created_at: string;
   updated_at: string;
   page: number;
@@ -14,19 +13,82 @@ export type PageResult = {
   job_id: string;
   status_code: number;
   parser_type: string;
+}
+
+export type PageResult = APIResult & {
+  content: Content;
 };
 
-type Content = {
+export type ProductData = APIResult & {
+  content: ProductContent;
+}
+
+export type Content = {
   url: string;
   page: number;
-  results: ResultOptions;
+  results: Results;
   last_visible_page: number;
   parse_status_code: number;
 };
 
-type Results = {
+export type ProductContent = {
+  url: string;
+  title: string;
+  description: string;
+  images: {
+    full_size: string[];
+    thumbnail: string[];
+  };
+  highlights?: string[];
+  reviews: {
+    rating: number;
+    top_review: {
+      text: string;
+      title: string;
+      rating: number;
+      author: string;
+      source: string;
+    };
+    rating_stars: number;
+    reviews_count: number;
+    reviews_by_stars: {
+      [starRating]: {
+        url: string;
+        reviews_count: number;
+      };
+    };
+  };
+  pricing: {
+    online: [
+      {
+        price: number;
+        seller: string;
+        details: string;
+        currency: string;
+        condition: string;
+        price_tax: number;
+        price_total: number;
+        seller_link: string;
+        price_shipping: number;
+      }
+    ];
+  };
+  specifications: [
+    {
+      items: [
+        {
+          title: string;
+          value: string;
+        }
+      ];
+      section_title: string;
+    }
+  ];
+};
+
+export type Results = {
   paid: any[];
-  filter: Filter[];
+  filters: Filter[];
   organic: Organic[];
   search_information: {
     query: string;
@@ -34,17 +96,17 @@ type Results = {
   };
 };
 
-type Filter = {
+export type Filter = {
   name: string;
   values: Value[];
 };
 
-type Value = {
+export type Value = {
   url: string;
   value: string;
 };
 
-type Organic = {
+export type Organic = {
   pos: number;
   url: string;
   type: string;

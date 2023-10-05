@@ -2,10 +2,8 @@ import { NextResponse } from 'next/server'
 import { PageResult, SearchParams } from '@/types'
 
 export async function POST(request: Request) {
-  console.log('Receiving request');
   const { searchTerm, pages, ...params } = await request.json();
   const searchParams: SearchParams = params;
-  console.log('Received request, extracted url');
 
   if (!searchTerm) {
     return NextResponse.next(
@@ -14,7 +12,6 @@ export async function POST(request: Request) {
       })
     );
   }
-  console.log('Search term processed');
 
   const filters: any = [];
 
@@ -26,18 +23,16 @@ export async function POST(request: Request) {
 
       filters.push({
         key,
-        value: key === 'sortBy' ? value : Number(value)
+        value: key === 'sort_by' ? value : Number(value)
       });
     }
   });
-  console.log('Filters processed');
 
-  console.log('Fetching oxylabs api');
-  const response = await fetch('https://reatime.oxylabs.io/v1/queries', {
+  const response = await fetch('https://realtime.oxylabs.io/v1/queries', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Basic ${Buffer.from(process.env.OXYLABS_USERNAME + ':' + process.env.OXYLABS_PASSWORD
+      Authorization: `Basic ${Buffer.from(process.env.OXYLABS_USERNAME + ':' + process.env.OXYLABS_PASSWORD
       ).toString('base64')}`,
     },
     cache: 'no-store',
@@ -50,14 +45,9 @@ export async function POST(request: Request) {
       context: filters,
     }),
   })
-  console.log('Fetch complete');
 
-  console.log('JSONify fetch response');
   const data = await response.json();
-
-  console.log('Inject json data to page results');
   const pageResults: PageResult[] = data.results;
 
-  console.log('Return page results');
   return NextResponse.json(pageResults);
 }
