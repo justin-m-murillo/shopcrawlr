@@ -10,6 +10,8 @@ import SearchSelector from '../subcomponents/SearchSelector';
 import Selector from '../subcomponents/Selector';
 import { getMaxPriceFilter, getMinPriceFilter, getPagesFilter, getSortFilter } from '@/utils/getSearchFilters';
 import styles from './styles';
+import shopcrawlr from '../../assets/SHOpC.png'
+
 
 const PAGES_OPTIONS = getPagesFilter();
 const SORT_OPTIONS = getSortFilter();
@@ -27,7 +29,7 @@ const Header = () => {
     <header className={styles.header_root}>
       <Link href='/'>
         <Image 
-          src="https://links.papareact.com/208"
+          src={shopcrawlr}
           alt="logo"
           width={150}
           height={150}

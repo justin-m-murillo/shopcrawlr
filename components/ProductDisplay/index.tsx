@@ -37,8 +37,7 @@ const ProductDisplay = ({ productData }: ProductDisplayProps) => {
           <Highlights highlights={highlights} />
         </DetailsWrapper>
       </section>
-
-      
+     
       {reviews && (
         <section>
           <hr className={displayStyles.display_horiz} />

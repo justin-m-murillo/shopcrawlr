@@ -2,7 +2,7 @@
 const styles = {
   header_root: 'flex flex-col items-center md:flex-row md:items-start md:space-x-6 ' +
     'px-2 pt-10 pb-5 md:p-10 md:p-5',
-  header_image: 'object-contain mr-10',
+  header_image: 'object-contain mx-10',
   magnifying_glass: 'h-5 w-5 text-gray-400',
   input_search: 'outline-none flex-1',
   search_wrapper: 'flex flex-1 px-6 py-4 md:max-w-5xl items-center space-x-2 bg-white ' + 

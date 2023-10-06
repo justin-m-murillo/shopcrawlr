@@ -14,7 +14,7 @@ const MainBody = ({ results, term }: ResultsListProps) => {
           
           <div className={mainBodyStyles.page}>
             <div className={mainBodyStyles.page_header}>
-              <h1>Shop on Google</h1>
+              {/* <h1>Shop on Google</h1> */}
               <h2 className={mainBodyStyles.page_index}>
                 Search Results for Page {index + 1}
               </h2>

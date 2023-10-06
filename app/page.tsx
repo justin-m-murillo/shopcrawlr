@@ -31,7 +31,7 @@ const EXAMPLE_SEARCHES = [
   },
   {
     term: 'iPhone 15',
-    url: '/search/monitors?sort_by=r&min_price=500',
+    url: '/search/iphone%2015?sort_by=r',
     color: 'bg-red-500',
   },
   {
